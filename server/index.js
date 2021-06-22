@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const AWS = require("aws-sdk");
+const cors = require('cors');
 const multer  = require('multer');
 const bodyParser = require('body-parser');
 require('dotenv').config();
@@ -26,6 +27,7 @@ const app = express();
 const servingPath = path.join(__dirname, '..', 'client', 'dist');
 app.use(express.static(servingPath));
 app.use(bodyParser.json());
+app.use(cors());
 
 // Products API --------------------------------------------------------
 
