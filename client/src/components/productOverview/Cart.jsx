@@ -1,6 +1,8 @@
 import React from 'react';
 import CartStar from './icons/CartStar.jsx';
 
+const BACKEND_URL = process.env.NODE_ENV === ‘development’ ? `http://localhost:3000` : `http://54.86.190.136`;
+
 class Cart extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,7 @@ class Cart extends React.Component {
 
   componentDidMount() {
     // for checking cart updates - can move elsewhere
-    fetch('http://localhost:3000/cart')
+    fetch(`${BACKEND_URL}/cart`)
       .then((results) => {
         return results.json();
       })
@@ -71,7 +73,7 @@ class Cart extends React.Component {
       let fetchPromises = [];
       for (let i = 0; i < this.state.quantity; i++) {
         fetchPromises.push(
-          fetch(`http://localhost:3000/cart?sku=${sku_id}`, { method: 'POST'})
+          fetch(`${BACKEND_URL}/cart?sku=${sku_id}`, { method: 'POST'})
         )
       }
       Promise.all(fetchPromises)

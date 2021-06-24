@@ -5,6 +5,8 @@ import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import WithTracking from '../hoc/withTracking.jsx';
 
+BACKEND_URL = process.env.NODE_ENV === ‘development’ ? `http://localhost:3000` : `http://54.86.190.136`;
+
 export class Overview extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ export class Overview extends React.Component {
   }
 
   fetchProductInfo() {
-    return fetch(`http://18.218.194.166/productInfo?productId=${this.props.productId}`)
+    return fetch(`${BACKEND_URL}/productInfo?productId=${this.props.productId}`)
       .then((results) => {
         return results.json();
       })
@@ -38,7 +40,7 @@ export class Overview extends React.Component {
   }
 
   fetchStyles() {
-    return fetch(`http://18.218.194.166/styles?productId=${this.props.productId}`)
+    return fetch(`${BACKEND_URL}/styles?productId=${this.props.productId}`)
       .then((results) => {
         return results.json();
       })
