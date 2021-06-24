@@ -25,7 +25,7 @@ export class Overview extends React.Component {
   }
 
   fetchProductInfo() {
-    return fetch(`http://localhost:3000/productInfo?productId=${this.props.productId}`)
+    return fetch(`http://18.218.194.166:3000/productInfo?productId=${this.props.productId}`)
       .then((results) => {
         return results.json();
       })
