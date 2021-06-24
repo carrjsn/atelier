@@ -1,7 +1,7 @@
 import React from 'react';
 import CartStar from './icons/CartStar.jsx';
 
-const BACKEND_URL = process.env.NODE_ENV === ‘development’ ? `http://localhost:3000` : `http://54.86.190.136`;
+const BACKEND_URL = process.env.NODE_ENV === 'development' ? `http://localhost:3000` : `http://54.86.190.136`;
 
 class Cart extends React.Component {
   constructor(props) {
