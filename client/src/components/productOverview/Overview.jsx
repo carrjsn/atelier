@@ -5,7 +5,7 @@ import StyleSelector from './StyleSelector.jsx';
 import ImageGallery from './ImageGallery.jsx';
 import WithTracking from '../hoc/withTracking.jsx';
 
-BACKEND_URL = process.env.NODE_ENV === 'development' ? `http://localhost:3000` : `http://54.86.190.136`;
+const BACKEND_URL = process.env.NODE_ENV === 'development' ? `http://localhost:3000` : `http://54.86.190.136`;
 
 export class Overview extends React.Component {
   constructor(props) {
