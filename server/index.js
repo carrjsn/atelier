@@ -4,12 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const AWS = require("aws-sdk");
-<<<<<<< HEAD
 const cors = require('cors');
 const multer  = require('multer');
-=======
 const multiparty = require('multiparty');
->>>>>>> 88f570f82f69e753d6522ddb9e1f17eee434a5ef
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -17,7 +14,6 @@ const apiUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp`;
 const gitToken = process.env.GIT_API_TOKEN;
 const s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
-<<<<<<< HEAD
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/')
@@ -34,12 +30,10 @@ const app = express();
 const servingPath = path.join(__dirname, '..', 'client', 'dist');
 app.use(express.static(servingPath));
 app.use(bodyParser.json());
-=======
 const app = express();
 const servingPath = path.join(__dirname, '..', 'client', 'dist');
 app.use(express.static(servingPath));
 app.use(bodyParser.json({limit: '50mb'}));
->>>>>>> 88f570f82f69e753d6522ddb9e1f17eee434a5ef
 app.use(cors());
 
 // Products API --------------------------------------------------------
