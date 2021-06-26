@@ -21,7 +21,6 @@ var storage = multer.diskStorage({
   }
 })
 
-console.log('gitToken', gitToken);
 
 var upload = multer({ storage: storage })
 
