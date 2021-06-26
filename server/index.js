@@ -8,7 +8,6 @@ const cors = require('cors');
 const multer  = require('multer');
 const multiparty = require('multiparty');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 
 const apiUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp`;
 const gitToken = process.env.GIT_API_TOKEN;
@@ -23,13 +22,8 @@ var storage = multer.diskStorage({
   }
 })
 
-
 var upload = multer({ storage: storage })
 
-const app = express();
-const servingPath = path.join(__dirname, '..', 'client', 'dist');
-app.use(express.static(servingPath));
-app.use(bodyParser.json());
 const app = express();
 const servingPath = path.join(__dirname, '..', 'client', 'dist');
 app.use(express.static(servingPath));
