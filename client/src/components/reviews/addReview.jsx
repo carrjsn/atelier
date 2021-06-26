@@ -61,6 +61,9 @@ class AddReview extends React.Component {
 
   onCharacteristicChange = (e, id) => {
     // console.log('e', e.target.value);
+    if (e.target.value === undefined) {
+      return;
+    }
     this.setState((prevState) => ({
       characteristics: {
         ...prevState.characteristics,

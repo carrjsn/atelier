@@ -5,7 +5,7 @@ import CheckCircle from '../reviews/checkCircle.jsx';
 const StyleThumbnail = (props) => {
 
   let thumbnail;
-  if (props.currentStyle.name === props.name) {
+  if (props.currentStyle.style_id === props.id) {
     thumbnail =
     <div className='style-thumbnail current-style-selection' onClick={props.updateStyle}>
       <img id={props.id} src={props.thumbnail}></img>

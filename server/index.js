@@ -1,17 +1,23 @@
+require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
 const AWS = require("aws-sdk");
+<<<<<<< HEAD
 const cors = require('cors');
 const multer  = require('multer');
+=======
+const multiparty = require('multiparty');
+>>>>>>> 88f570f82f69e753d6522ddb9e1f17eee434a5ef
 const bodyParser = require('body-parser');
-require('dotenv').config();
+const cors = require('cors');
 
 const apiUrl = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp`;
 const gitToken = process.env.GIT_API_TOKEN;
 const s3 = new AWS.S3({apiVersion: '2006-03-01'});
 
+<<<<<<< HEAD
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'uploads/')
@@ -28,6 +34,12 @@ const app = express();
 const servingPath = path.join(__dirname, '..', 'client', 'dist');
 app.use(express.static(servingPath));
 app.use(bodyParser.json());
+=======
+const app = express();
+const servingPath = path.join(__dirname, '..', 'client', 'dist');
+app.use(express.static(servingPath));
+app.use(bodyParser.json({limit: '50mb'}));
+>>>>>>> 88f570f82f69e753d6522ddb9e1f17eee434a5ef
 app.use(cors());
 
 // Products API --------------------------------------------------------
@@ -216,28 +228,29 @@ app.post('/interactions', async (req, res) => {
   }
 })
 
-app.post('/uploadImage', upload.single('imageFile'), async (req, res) => {
+app.post('/uploadImage', async (req, res) => {
   try {
-    console.log('req body', req.body, 'file', req.file);
-    var file = path.join(__dirname, '..', 'uploads', 'tempImage')
-    // console.log('file', file)
+    var form = new multiparty.Form();
 
-    var fileStream = fs.createReadStream(file);
-    fileStream.on('error', function(err) {
-        console.log('File Error', err);
+    form.on('part', function(part) {
+      var uploadParams = {
+        Bucket: 'addreview-photos',
+        Key: `${Date.now()}`,
+        Body: part,
+        ContentType:'image/jpeg'
+      };
+
+      s3.upload(uploadParams).promise()
+      .then((data) => {
+        console.log("Upload Success", data);
+        res.status(201).send(JSON.stringify(data.Location));
+      })
+      .catch((err) => {
+        console.log("Error", err);
+      })
     });
 
-    var uploadParams = {Bucket: 'addreview-photos', Key: `${req.file.filename}-${Date.now()}`, Body: fileStream, ContentType:'image/jpeg'};
-
-    s3.upload (uploadParams).promise()
-    .then((data) => {
-      console.log("Upload Success", data.Location);
-      res.status(201).send(JSON.stringify(data.Location));
-    })
-    .catch((err) => {
-      console.log("Error", err);
-    })
-
+    form.parse(req);
   } catch (err) {
     console.log('ERROR POSTING IMAGE', err);
     res.status(500).send(err);
@@ -260,5 +273,7 @@ app.get('/qa/questions', (req, res) => {
 
 const port = 3000;
 app.listen(port, () => {
+  console.log('ENV', process.env.NODE_ENV);
+  console.log('GIT', gitToken);
   console.log(`Listening on port http://localhost:${port}`);
 });

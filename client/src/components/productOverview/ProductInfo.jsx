@@ -17,6 +17,8 @@ const ProductInfo = ({product, currentStyle, noOfReviews, avgRating}) => {
     readReviews = <span className='read-reviews'><a href='#reviews'>Read {noOfReviews} review</a></span>
   }
 
+  let overviewStars = noOfReviews ? <div><div className='overview-stars'>{stars}</div>{readReviews}</div> : null;
+
   let price;
   if (currentStyle.sale_price) {
     price = <div><span className='sale-price'>${currentStyle.sale_price}</span><span className='original-price'>${currentStyle.original_price}</span></div>
@@ -26,19 +28,24 @@ const ProductInfo = ({product, currentStyle, noOfReviews, avgRating}) => {
 
   return (
     <div className='product-info'>
-      <div className='overview-stars'>{stars}</div>
-      {readReviews}
+      {overviewStars}
+      {/* {readReviews} */}
       <div className='product-category'>{product.category}</div>
       <div className='product-name'>{product.name}</div>
       {price}
-      <div className='product-slogan'>{product.slogan}</div>
-      <div className='product-description'>{product.description}</div>
+      {/* <div className='product-slogan'>{product.slogan}</div>
+      <div className='product-description'>{product.description}</div> */}
       {/* <img src={require('./images/facebook.svg')} className='social-media-icon'></img> */}
       {/* <img src='images/twitter.png' className='social-media-icon'></img>
       <img src='images/pinterest.png' className='social-media-icon'></img> */}
-      <FacebookSquare size={30}/>
+      <div>
+        <FacebookSquare size={35}/>
+        <TwitterSquare size={35}/>
+        <PinterestSquare size={35}/>
+      </div>
+      {/* <FacebookSquare size={30}/>
       <TwitterSquare size={30}/>
-      <PinterestSquare size={30}/>
+      <PinterestSquare size={30}/> */}
     </div>
   )
 };

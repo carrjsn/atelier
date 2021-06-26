@@ -1,6 +1,6 @@
 import React from "react";
 
-const ArrowUp = ({size=26, color="#FFFFFF", moveUp, showHide}) => (
+const ArrowUp = ({size=22, color="#FFFFFF", moveUp, showHide}) => (
   <svg
     id='arrow-up'
     onClick={moveUp}

@@ -24,7 +24,7 @@ describe ('Product Overview Widget', () => {
 
   it ('should render all subcomponents when in default view', () => {
     wrapper.setState({ expandedView: false });
-    expect(wrapper.children()).toHaveLength(4);
+    expect(wrapper.children()).toHaveLength(5);
     expect(wrapper.exists(ImageGallery)).toBe(true);
     expect(wrapper.exists(ProductInfo)).toBe(true);
     expect(wrapper.exists(StyleSelector)).toBe(true);

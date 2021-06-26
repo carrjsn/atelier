@@ -402,6 +402,7 @@ class App extends React.Component {
   render () {
     return (
       <div className='app'>
+        <div className='nav'><h1>Atelier</h1></div>
         <OverviewErrorBoundary>
           <Overview productId={this.state.productId} avgRating={this.state.avgRating} noOfReviews={this.state.noOfReviews}/>
         </OverviewErrorBoundary>
