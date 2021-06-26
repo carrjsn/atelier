@@ -1,5 +1,6 @@
 import React from 'react';
 import Spinner from './spinner.jsx';
+import {BACKEND_URL} from '../app/app.jsx';
 
 class UploadPhotos extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class UploadPhotos extends React.Component {
     let formData = new FormData();
     formData.append('imageFile', this.state.file);
     // console.log('formdata', formData.get('imageFile'));
-    fetch(`http://localhost:3000/uploadImage`, {
+    fetch(`${BACKEND_URL}/uploadImage`, {
       method: 'POST',
       body: formData
     })

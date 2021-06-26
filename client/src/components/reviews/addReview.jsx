@@ -3,6 +3,7 @@ import Stars from '../stars/stars.jsx';
 import SelectCharacteristic from './selectCharacteristic.jsx';
 import UploadPhotos from './uploadPhotos.jsx';
 import {validateEmail} from '../../../../helper/reviewsHelper.js';
+import {BACKEND_URL} from '../app/app.jsx';
 
 class AddReview extends React.Component {
   constructor (props) {
@@ -150,7 +151,7 @@ class AddReview extends React.Component {
     finalData.characteristics = characteristics;
     finalData.photos = photos;
 
-    fetch (`http://localhost:3000/reviews`, {
+    fetch (`${BACKEND_URL}/reviews`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

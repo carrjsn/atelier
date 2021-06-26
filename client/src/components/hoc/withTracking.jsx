@@ -1,5 +1,7 @@
 import React from 'react';
 
+const BACKEND_URL = process.env.NODE_ENV === 'development' ? `http://localhost:3000` : `http://34.225.154.204`;
+
 const WithTracking = (WrappedComponent, widget) => {
   return class extends React.Component {
     constructor(props) {
@@ -22,7 +24,7 @@ const WithTracking = (WrappedComponent, widget) => {
       }
       // console.log('interactionObj', interactionObj);
 
-      fetch(`http://localhost:3000/interactions`, {
+      fetch(`${BACKEND_URL}/interactions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

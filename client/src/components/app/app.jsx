@@ -7,7 +7,7 @@ import {findAvgRating, sortByCriteria} from '../../../../helper/reviewsHelper.js
 import ReviewsErrorBoundary from '../errorBoundary/reviewsErrorBoundary.jsx';
 import OverviewErrorBoundary from '../errorBoundary/overviewErrorBoundary.jsx'
 
-const BACKEND_URL = process.env.NODE_ENV === 'development' ? `http://localhost:3000` : `http://54.86.190.136`;
+export const BACKEND_URL = process.env.NODE_ENV === 'development' ? `http://localhost:3000` : `http://54.86.190.136`;
 
 class App extends React.Component {
   constructor (props) {
@@ -264,7 +264,10 @@ class App extends React.Component {
   }
 
   getAllReviews = (endIdx = 2) => {
-    return fetch(`${BACKEND_URL}/allReviews?productId=${this.state.productId}`)
+    // console.log('process env', process.env.NODE_ENV)
+    let reviewsUrl = `${BACKEND_URL}/allReviews?productId=${this.state.productId}`;
+
+    return fetch(reviewsUrl)
     .then((resp) => resp.json())
     .then((allReviews) => {
       // console.log('all reviews', allReviews)

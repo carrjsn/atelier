@@ -2,7 +2,7 @@ import React from 'react';
 import QAndASearch from './qAndASearch.jsx';
 import QAndAList from './qAndAList.jsx';
 import QAndAOptions from './qAndAOptions.jsx';
-
+import {BACKEND_URL} from '../app/app.jsx';
 
 class QAndA extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class QAndA extends React.Component {
   }
 
   getAllQuestions = () => {
-    return fetch(`http://localhost:3000/qa/questions/?productId=${this.props.productId}`)
+    return fetch(`${BACKEND_URL}/qa/questions/?productId=${this.props.productId}`)
     .then((resp) => resp.json())
     .then((allQuestions) => {
       this.setState({questions: allQuestions})
