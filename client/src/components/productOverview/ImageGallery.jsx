@@ -121,7 +121,7 @@ class ImageGallery extends React.Component {
     let mainImage;
     let imageList;
     if (this.props.currentStyle.photos) {
-      mainImage = <img className={`image-main-${view}`} src={this.state.currentImage.url} onClick={imageClickHandler}></img>
+      mainImage = <img className={`image-main-${view}`} alt={this.state.currentImage.url} src={this.state.currentImage.url} onClick={imageClickHandler}></img>
       imageList = <ImageList view={view} currentImage={this.state.currentImage} updateMainImage={this.updateMainImage.bind(this)} photos={this.state.photos} currentIndex={this.state.currentIndex} next={this.nextImage.bind(this)} prev={this.prevImage.bind(this)}/>
     } else {
       mainImage = <div></div>

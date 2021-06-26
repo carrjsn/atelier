@@ -100,10 +100,8 @@ class ImageList extends React.Component {
     if (this.props.view === 'default') {
       return (
         <div className='image-list-default'>
-          {/* {upArrow} */}
           <ArrowUp showHide={upStatus} moveUp={this.moveUp.bind(this)} />
-          {thumbnailList.map((photo, idx) => <ImageThumbnail currentImage={this.props.currentImage} updateMainImage={this.props.updateMainImage} thumbnail={photo.thumbnail_url} url={photo.url} key={idx}/>)}
-          {/* {downArrow} */}
+          {thumbnailList.map((photo, idx) => <ImageThumbnail currentImage={this.props.currentImage} updateMainImage={this.props.updateMainImage} thumbnail={photo.thumbnail_url} photoNumber={idx} url={photo.url} key={idx}/>)}
           <ArrowDown showHide={downStatus} moveDown={this.moveDown.bind(this)} />
         </div>
       )

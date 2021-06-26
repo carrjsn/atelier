@@ -11,7 +11,7 @@ const Features = (props) => {
       <ul>
       {props.product.features.map((item, idx) => {
          let val = item.value ? ': ' + item.value : null;
-         return <li key={idx}>  {item.feature}{val}</li>}
+         return <li key={idx}>  <b>{item.feature}</b>{val}</li>}
       )}
       </ul>
     </div>

@@ -76,7 +76,7 @@ class RelatedItems extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='related-items'>
         <h1>Related Products</h1>
         <div>
         <button onClick={this.handle_previous}>Previous</button>
