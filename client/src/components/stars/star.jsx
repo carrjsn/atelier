@@ -17,7 +17,7 @@ const Star = ({ size, gradient, starNumber }) => {
       <svg width="0" height="0">
         <defs>
             <linearGradient id="zeroGradient">
-              <stop offset={"0%"}  stopColor="red" />
+              <stop offset={"0%"}  stopColor="gold" />
               <stop stopColor="white" />
             </linearGradient>
           </defs>
@@ -26,7 +26,7 @@ const Star = ({ size, gradient, starNumber }) => {
       <svg width="0" height="0">
         <defs>
           <linearGradient id="quarterGradient">
-            <stop offset={"25%"}  stopColor="red" />
+            <stop offset={"25%"}  stopColor="gold" />
             <stop stopColor="white" />
           </linearGradient>
         </defs>
@@ -35,7 +35,7 @@ const Star = ({ size, gradient, starNumber }) => {
       <svg width="0" height="0">
         <defs>
             <linearGradient id="halfGradient">
-              <stop offset={"50%"}  stopColor="red" />
+              <stop offset={"50%"}  stopColor="gold" />
               <stop stopColor="white" />
             </linearGradient>
           </defs>
@@ -44,7 +44,7 @@ const Star = ({ size, gradient, starNumber }) => {
       <svg width="0" height="0">
         <defs>
           <linearGradient id="threeQuarterGradient">
-            <stop offset={"75%"}  stopColor="red" />
+            <stop offset={"75%"}  stopColor="gold" />
             <stop stopColor="white" />
           </linearGradient>
         </defs>
@@ -53,7 +53,7 @@ const Star = ({ size, gradient, starNumber }) => {
       <svg width="0" height="0">
         <defs>
             <linearGradient id="fullGradient">
-              <stop offset={"100%"}  stopColor="red" />
+              <stop offset={"100%"}  stopColor="gold" />
               <stop stopColor="white" />
             </linearGradient>
           </defs>

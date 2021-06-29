@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import Sort from '../../../client/src/components/reviews/sort.jsx';
 
 describe ('Sort Dropdown', () => {
-  const wrapper = shallow(<Sort />);
+  const wrapper = shallow(<Sort selectedFilters={[1]} searchTerm='a'/>);
 
   it ('checks if the component exists', () => {
     expect(wrapper.exists('.reviews-sort')).toBe(true);

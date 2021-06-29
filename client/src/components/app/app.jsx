@@ -41,7 +41,7 @@ class App extends React.Component {
   onReviewsSearch = (searchTerm) => {
     searchTerm = searchTerm.toLowerCase();
     // console.log('searchterm', searchTerm)
-    if (searchTerm.length < 4) {
+    if (searchTerm.length < 3) {
       this.setState((prevState) => ({
         searchedTotalReviews: [],
         searchedNextReviews: [],

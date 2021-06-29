@@ -183,6 +183,7 @@ class AddReview extends React.Component {
               <div className='add-review-modal-main'>
                 <h3> Write Your Review </h3>
                 <h4> About {this.props.productName} </h4>
+
                 <div className='add-review-rating'>
                   Overall Rating *
                   <div className='description' >
@@ -228,7 +229,7 @@ class AddReview extends React.Component {
                   <UploadPhotos photos={this.state.photos} uploadPhoto={this.uploadPhoto}/>
                   <div className='list'>
                     {
-                      this.state.photos.map((photoUrl, idx) => <img key={idx} src={photoUrl} height='60px' width='60px' onClick={() => this.removePhoto(photoUrl)}/> )
+                      this.state.photos.map((photoUrl, idx) => <img key={idx} alt='Upload a Photo' src={photoUrl} height='60px' width='60px' onClick={() => this.removePhoto(photoUrl)}/> )
                     }
                   </div>
                 </div>

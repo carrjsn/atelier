@@ -11,7 +11,7 @@ describe ('Star Breakdown', () => {
   });
 
   it('checks that Star Breakdown component is rendering children', () => {
-    expect(wrapper.children()).toHaveLength(7);
+    expect(wrapper.children()).toHaveLength(6);
   });
 
   it('should always display 5 bars', () => {

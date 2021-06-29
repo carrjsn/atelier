@@ -69,10 +69,14 @@ class ReviewsTile extends React.Component {
     return (
       <div className='reviews-tile'>
         <div className='reviews-tile-stars-date'>
-          <div className='reviews-tile-stars'> <Stars size={24} rating={rating}/> </div>
-          <div className='reviews-tile-usernameDate'>{getHighlightedText(reviewer_name, this.props.searchTerm)}, {new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+          <div className='reviews-tile-stars'> <Stars size={18} rating={rating}/> </div>
+          <div className='reviews-tile-usernameDate'>
+            { getHighlightedText(reviewer_name, this.props.searchTerm) }, { new Date(date).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }
+          </div>
         </div>
+
         <div className='reviews-tile-summary'> {getHighlightedText(summary, this.props.searchTerm) } </div>
+
         <div className='reviews-tile-body'>
           <div className='reviews-tile-body-short'>
             {this.state.expandedBody ? getHighlightedText(body, this.props.searchTerm) : getHighlightedText(shortBody, this.props.searchTerm)}
@@ -84,18 +88,20 @@ class ReviewsTile extends React.Component {
           }
           <div className='reviews-tile-body-images'>
             {
-              photos.length === 0
-                ? null
-                : photos.map((photo) => <img key={photo.id} src={photo.url} height='60px' width='60px' onClick={() => this.displayModal(photo.url)} style={{cursor: 'pointer'}}/>)
+              photos.length === 0 ? null :
+                photos.map((photo) => <img key={photo.id} alt='Product mage by user' src={photo.url} height='60px' width='60px' onClick={() => this.displayModal(photo.url)} style={{cursor: 'pointer'}}/>)
             }
           </div>
           {
             this.state.showModal ? <Modal url={this.state.url} hideModal={this.hideModal}/> : null
           }
         </div>
+
         {recommend ? <div> <CheckCircle /> I RECOMMEND THIS PDT </div> : null}
+
         {response ? <Response response={response}/> : null}
-        <div>
+
+        <div className='reviews-tile-actions'>
           <p>WAS THIS REVIEW HELPFUL?
           <span className='reviews-tile-helpfulness' onClick={this.handleYesClick}> YES </span> ({helpfulness}) OR
           <span> NO </span> (#) |

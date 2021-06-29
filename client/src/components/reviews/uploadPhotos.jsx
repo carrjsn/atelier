@@ -31,9 +31,7 @@ class UploadPhotos extends React.Component {
       method: 'POST',
       body: formData
     })
-    .then((resp) => {
-      return resp.json();
-    })
+    .then((resp) => resp.json())
     .then((url) => {
       // console.log('url in Upload Photot', url);
       this.props.uploadPhoto(url);
@@ -69,7 +67,6 @@ class UploadPhotos extends React.Component {
                   <h3> Upload A Photo</h3>
                   <button type='button' onClick={this.displayImageModal}>Close</button>
                 </div>
-
 
                 <div>
                   <label htmlFor='upload-photo'>Add Photo From Your Computer</label> <br />

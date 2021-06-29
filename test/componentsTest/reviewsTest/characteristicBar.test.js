@@ -10,6 +10,6 @@ describe ('Bar', () => {
   });
 
   it('should have 3 children', () => {
-    expect(wrapper.find('.characteristic-bar').children().length).toBe(3)
+    expect(wrapper.find('.characteristic-bar').children().length).toBe(2)
   });
 });

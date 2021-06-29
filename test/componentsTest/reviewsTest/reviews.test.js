@@ -12,7 +12,7 @@ import ReviewsTile from '../../../client/src/components/reviews/reviewsTile.jsx'
 
 
 describe ('Reviews Widget', () => {
-  const wrapper = shallow(<Reviews currentReviews={[]}/>);
+  const wrapper = shallow(<Reviews currentReviews={[]} searchTerm='a' selectedFilters={[]} filteredTotalReviews={[]} searchedTotalReviews={[]} filteredSearchedTotalReviews={[]} nextReviews={[]} />);
 
   it ('checks if the widget exists', () => {
     console.log(wrapper.get(0))
@@ -22,14 +22,6 @@ describe ('Reviews Widget', () => {
   it('checks that Reviews component is rendering children', () => {
     expect(wrapper.children()).toHaveLength(2);
   });
-
-  it('should render class "reviews-main" dynamically', () => {
-    wrapper.setProps({ filteredTotalReviews:[1], filteredCurrentReviews:[1], filteredNextReviews:[1], filteredSearchedTotalReviews:[1], filteredSearchedCurrentReviews:[1], filteredSearchedNextReviews:[1], searchedTotalReviews:[1] });
-    expect(wrapper.find('.reviews-main').exists()).toBe(false);
-
-    wrapper.setProps({ currentReviews: [1], nextReviews: [2] });
-    expect(wrapper.find('.reviews-main').exists()).toBe(true);
-  })
 
   it ('shoudl render the following components: RatingsBreakdown, PdtBreakdown, Sort, Search, ReviewsList, MoreReviews and AddReview', () => {
     wrapper.setProps({ currentReviews: [1], nextReviews: [2], filteredCurrentReviews:[1], filteredNextReviews:[1] });

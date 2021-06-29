@@ -21,12 +21,16 @@ export class Overview extends React.Component {
       expandedView: false
     }
 
+    this.updateStyle = this.updateStyle.bind(this);
+    this.setDefaultStyle = this.setDefaultStyle.bind(this);
+    this.toggleExpandedView = this.toggleExpandedView.bind(this);
+    this.fetchStyles = this.fetchStyles.bind(this);
   }
 
   componentDidMount() {
     this.fetchProductInfo()
-      .then(this.fetchStyles.bind(this))
-      .then(this.setDefaultStyle.bind(this));
+      .then(this.fetchStyles)
+      .then(this.setDefaultStyle);
   }
 
   fetchProductInfo() {
@@ -56,21 +60,11 @@ export class Overview extends React.Component {
   }
 
   setDefaultStyle() {
-
     let firstStyle = this.state.styles[0];
-
-    // for using default style prop, not always first style though..
-    // this.state.styles.forEach(style => {
-    //   if (style['default?']) {
-    //     firstStyle = style;
-    //   }
-    // });
-
     return this.setState({currentStyle: firstStyle});
   }
 
   updateStyle(e) {
-    // console.log('click', e);
     e.preventDefault();
     this.state.styles.forEach(style => {
       if (style.style_id === Number(e.target.id)) {
@@ -98,7 +92,7 @@ export class Overview extends React.Component {
       // expanded view
       return (
         <div className='overview' onClick={(e) => this.props.onWrappedComponentClick(e)}>
-          <ImageGallery currentStyle={this.state.currentStyle} expanded={this.state.expandedView} toggleExpandedView={this.toggleExpandedView.bind(this)}/>
+          <ImageGallery currentStyle={this.state.currentStyle} expanded={this.state.expandedView} toggleExpandedView={this.toggleExpandedView}/>
         </div>
       );
 
@@ -106,9 +100,9 @@ export class Overview extends React.Component {
       // default view
       return (
         <div className='overview' onClick={(e) => this.props.onWrappedComponentClick(e)}>
-          <ImageGallery currentStyle={this.state.currentStyle} expanded={this.state.expanded} toggleExpandedView={this.toggleExpandedView.bind(this)}/>
+          <ImageGallery currentStyle={this.state.currentStyle} expanded={this.state.expanded} toggleExpandedView={this.toggleExpandedView}/>
           <ProductInfo product={this.state.product} currentStyle={this.state.currentStyle} avgRating={this.props.avgRating} noOfReviews={this.props.noOfReviews}/>
-          <StyleSelector updateStyle={this.updateStyle.bind(this)} styles={this.state.styles} currentStyle={this.state.currentStyle}/>
+          <StyleSelector updateStyle={this.updateStyle} styles={this.state.styles} currentStyle={this.state.currentStyle}/>
           <Cart currStyle={this.state.currentStyle}/>
           <div className='slogan-feature-container'>
             <SloganDescription product={this.state.product}/>

@@ -32,7 +32,7 @@ const WithTracking = (WrappedComponent, widget) => {
         body: JSON.stringify(interactionObj)
       })
       .then((resp) => {
-        console.log('SUCCESSFULLY POSTED INTERACTION', resp);
+        // console.log('SUCCESSFULLY POSTED INTERACTION', resp);
       })
       .catch((err) => {
         console.log('ERROR CREATING INTERACTION', err);

@@ -4,7 +4,7 @@ const Search = ({ onReviewsSearch }) => {
 
   return (
     <div className='reviews-search'>
-      <input type='search' name='reviews-search' id='reviews-search' placeholder='Enter Search Term' onChange={(e) => onReviewsSearch(e.target.value)} />
+      <input type='search' name='reviews-search' id='reviews-search' placeholder='SEARCH HERE' onChange={(e) => onReviewsSearch(e.target.value)} />
     </div>
   );
 };

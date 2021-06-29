@@ -10,13 +10,13 @@ describe ('Reviews List', () => {
   });
 
   it('checks that List component is rendering children', () => {
-    expect(wrapper.children()).toHaveLength(2);
+    expect(wrapper.children()).toHaveLength(1);
   });
 
   it ('should display the correct number of review tiles', () => {
     let reviews = [1, 2, 3];
     wrapper.setProps({ reviews });
     let list = wrapper.children()
-    expect(list.length).toBe(4);
+    expect(list.length).toBe(3);
   })
 });

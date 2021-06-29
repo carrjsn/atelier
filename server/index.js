@@ -1,4 +1,5 @@
 require('dotenv').config();
+const compression = require('compression')
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -25,6 +26,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 const app = express();
+app.use(compression());
 const servingPath = path.join(__dirname, '..', 'client', 'dist');
 app.use(express.static(servingPath));
 app.use(bodyParser.json({limit: '50mb'}));

@@ -14,6 +14,10 @@ class Cart extends React.Component {
       clickNoSize: false
     }
 
+    this.handleSizeChange = this.handleSizeChange.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleQuantityChange = this.handleQuantityChange.bind(this);
+
     this.selectBox = React.createRef();
   }
 
@@ -119,7 +123,7 @@ class Cart extends React.Component {
     // console.log('nosize', this.state.clickNoSize);
     let cartSizeSelect =
       <span className='cart-size-select'>
-        <select ref={input => this.selectBox = input} autoFocus={this.state.clickNoSize} id='size-select' defaultValue='SELECT SIZE' onChange={this.handleSizeChange.bind(this)}>
+        <select ref={input => this.selectBox = input} autoFocus={this.state.clickNoSize} id='size-select' defaultValue='SELECT SIZE' onChange={this.handleSizeChange}>
         <option disabled>SELECT SIZE</option>
         {availableSizes.map((size, idx) => <option value={size} key={idx}>{size}</option>)}
         </select>
@@ -138,13 +142,13 @@ class Cart extends React.Component {
     // default qty before style is selected
     if (!this.state.size) {
       qtySelector =
-      <select defaultValue='-' onChange={this.handleQuantityChange.bind(this)}>
+      <select defaultValue='-' onChange={this.handleQuantityChange}>
         <option disabled> - </option>
       </select>
     // after style is selected default to one
     } else {
       qtySelector =
-      <select onChange={this.handleQuantityChange.bind(this)}>
+      <select onChange={this.handleQuantityChange}>
         {qtys.map(num => <option value={num} key={num}>{num}</option>)}
       </select>
     }
@@ -157,7 +161,7 @@ class Cart extends React.Component {
     } else {
       addToCart =
       <div className='add-to-cart'>
-        <button onClick={this.handleAddToCart.bind(this)}>Add To Cart</button>
+        <button onClick={this.handleAddToCart}>Add To Cart</button>
       </div>
     }
 

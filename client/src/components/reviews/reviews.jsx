@@ -14,52 +14,77 @@ export class Reviews extends React.Component {
   }
 
   render () {
+    let reviewsList = <ReviewsList
+                        reviews={
+                          this.props.searchTerm.length >= 3 && this.props.selectedFilters.length > 0 ? this.props.filteredSearchedCurrentReviews :
+                          (this.props.searchTerm.length >=3 && this.props.selectedFilters.length === 0 ? this.props.searchedCurrentReviews :
+                            (this.props.searchTerm.length < 3 && this.props.selectedFilters.length > 0 ? this.props.filteredCurrentReviews :
+                              (this.props.currentReviews)
+                            )
+                          )
+                        }
+                        searchTerm={this.props.searchTerm}
+                        increaseReviewHelpfulnesss={this.props.increaseReviewHelpfulnesss}
+                        reportReview={this.props.reportReview}
+                        helpfulReviews={this.props.helpfulReviews}
+                      />
+    let addReviews = <AddReview productId={this.props.productId} productName={this.props.productName} characteristics={this.props.characteristics} />
+
     return (
       <div className='reviews' id='reviews' onClick={(e) => this.props.onWrappedComponentClick(e)}>
-        <h2>RATINGS & REVIEWS</h2>
+        <h4>RATINGS & REVIEWS</h4>
         <div className='reviews-body'>
           <div className='reviews-breakdown'>
-            <RatingBreakdown totalReviews={this.props.totalReviews} noOfReviews={this.props.noOfReviews} avgRating={this.props.avgRating} filterReviews={this.props.filterReviews} selectedFilters={this.props.selectedFilters} removeFilters={this.props.removeFilters} removedAllFilters={this.props.removedAllFilters}/>
+            <RatingBreakdown
+              totalReviews={this.props.totalReviews}
+              noOfReviews={this.props.noOfReviews}
+              avgRating={this.props.avgRating}
+              filterReviews={this.props.filterReviews}
+              selectedFilters={this.props.selectedFilters}
+              removeFilters={this.props.removeFilters}
+              removedAllFilters={this.props.removedAllFilters}
+            />
+
             <PdtBreakdown characteristics={this.props.characteristics}/>
           </div>
-          {
-            this.props.currentReviews.length === 0 ?
-              <AddReview productId={this.props.productId} productName={this.props.productName} characteristics={this.props.characteristics} />
-              :
-              <div className='reviews-main'>
-                <Sort
-                  sortReviews={this.props.sortReviews}
-                  reviewCriteria={this.props.reviewCriteria}
-                  noOfReviews={this.props.noOfReviews}
-                  noOfFilteredTotalReviews={this.props.filteredTotalReviews.length}
-                  noOfSearchedTotalReviews={this.props.searchedTotalReviews.length}
-                  noOfFilteredSearchedTotalReviews={this.props.filteredSearchedTotalReviews.length}
-                />
-                <Search onReviewsSearch={this.props.onReviewsSearch}/>
-                <ReviewsList
-                  reviews={this.props.filteredSearchedCurrentReviews.length > 0 ? this.props.filteredSearchedCurrentReviews :
-                    (this.props.searchedCurrentReviews.length > 0 ? this.props.searchedCurrentReviews :
-                      (this.props.filteredCurrentReviews.length > 0 ? this.props.filteredCurrentReviews:
-                        this.props.currentReviews
-                      )
+
+          <div className='reviews-main'>
+            <Sort
+              sortReviews={this.props.sortReviews}
+              reviewCriteria={this.props.reviewCriteria}
+              searchTerm={this.props.searchTerm}
+              selectedFilters={this.props.selectedFilters}
+              noOfReviews={this.props.noOfReviews}
+              noOfFilteredTotalReviews={this.props.filteredTotalReviews.length}
+              noOfSearchedTotalReviews={this.props.searchedTotalReviews.length}
+              noOfFilteredSearchedTotalReviews={this.props.filteredSearchedTotalReviews.length}
+            />
+
+            <Search onReviewsSearch={this.props.onReviewsSearch}/>
+
+            {
+              this.props.searchTerm.length >=3 && this.props.selectedFilters.length > 0 ? (this.props.filteredSearchedCurrentReviews.length === 0 ? null : reviewsList) :
+                (
+                  this.props.searchTerm.length >=3 && this.props.selectedFilters.length === 0 ? (this.props.searchedCurrentReviews.length === 0 ? null : reviewsList) :
+                  (this.props.searchTerm.length < 3 && this.props.selectedFilters.length > 0 ? (this.props.filteredCurrentReviews.length === 0 ? null : reviewsList) :
+                    this.props.currentReviews.length === 0 ? null : reviewsList
+                  )
+                )
+            }
+
+
+            <div className='reviews-btns'>
+              {
+                this.props.searchTerm.length >=3 && this.props.selectedFilters.length > 0 ? (this.props.filteredSearchedNextReviews.length > 0 ?  <MoreReviews get2Reviews={this.props.get2Reviews}/> : null) :
+                  (this.props.searchTerm.length >=3 && this.props.selectedFilters.length === 0 ? (this.props.searchedNextReviews.length > 0 ? <MoreReviews get2Reviews={this.props.get2Reviews}/> : null) :
+                    (this.props.searchTerm.length < 3 && this.props.selectedFilters.length > 0 ? (this.props.filteredNextReviews.length > 0 ? <MoreReviews get2Reviews={this.props.get2Reviews}/> : null) :
+                      (this.props.nextReviews.length > 0 ? <MoreReviews get2Reviews={this.props.get2Reviews}/> : null)
                     )
-                  }
-                  searchTerm={this.props.searchTerm}
-                  increaseReviewHelpfulnesss={this.props.increaseReviewHelpfulnesss}
-                  reportReview={this.props.reportReview}
-                  helpfulReviews={this.props.helpfulReviews}
-                />
-                <div className='reviews-btns'>
-                  {
-                    this.props.filteredSearchedCurrentReviews.length > 0 ? (this.props.filteredSearchedNextReviews.length > 0 ? <MoreReviews get2Reviews={this.props.get2Reviews}/> : null) :
-                    this.props.searchedCurrentReviews.length > 0 ? (this.props.searchedNextReviews.length > 0 ? <MoreReviews get2Reviews={this.props.get2Reviews}/> : null) :
-                    this.props.filteredCurrentReviews.length > 0 ? (this.props.filteredNextReviews.length > 0 ? <MoreReviews get2Reviews={this.props.get2Reviews}/> : null) :
-                    this.props.nextReviews.length > 0 ? <MoreReviews get2Reviews={this.props.get2Reviews}/> : null
-                  }
-                  <AddReview productId={this.props.productId} productName={this.props.productName} characteristics={this.props.characteristics} />
-                </div>
-              </div>
-          }
+                  )
+              }
+              {addReviews}
+            </div>
+          </div>
         </div>
       </div>
     );

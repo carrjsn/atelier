@@ -10,8 +10,16 @@ const RatingBreakdown = ({ totalReviews, noOfReviews, avgRating, filterReviews, 
   return (
     <div className='reviews-ratings-breakdown'>
       <RatingSummary avgRating={avgRating} noOfReviews={noOfReviews}/>
-      <div className='reviews-ratings-breakdown-recommend'> {recommendPercentage}% of users recommend this pdt</div>
-      <StarBreakdown totalReviews={totalReviews} filterReviews={filterReviews} selectedFilters={selectedFilters} removeFilters={removeFilters} removedAllFilters={removedAllFilters}/>
+      <div className='reviews-ratings-breakdown-recommend'>
+        {recommendPercentage}% of users recommend this pdt
+      </div>
+      <StarBreakdown
+        totalReviews={totalReviews}
+        filterReviews={filterReviews}
+        selectedFilters={selectedFilters}
+        removeFilters={removeFilters}
+        removedAllFilters={removedAllFilters}
+      />
     </div>
   );
 };

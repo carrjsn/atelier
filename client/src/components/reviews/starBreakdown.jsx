@@ -7,7 +7,6 @@ const StarBreakdown = ({ totalReviews, filterReviews, selectedFilters, removeFil
 
   return (
     <div className='reviews-ratings-breakdown-star'>
-      <h3> Rating Breakdown </h3>
       <div>
         Filters applied:  {
           selectedFilters.length === 0 ? 0 :
