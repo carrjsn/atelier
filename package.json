@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "jest": {
+    "testEnvironment": "jsdom",
     "setupFilesAfterEnv": [
       "<rootDir>/test/enzyme.config.js"
     ],
     "verbose": true,
     "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "<rootDir>/test/CSSStub.js"
-    }
+    },
+    "testPathIgnorePatterns": ["<rootDir>/cypress"]
   },
   "scripts": {
     "test": "jest",
@@ -57,6 +59,7 @@
   },
   "devDependencies": {
     "css-loader": "^5.2.6",
+    "cypress": "^7.6.0",
     "eslint": "^7.27.0",
     "style-loader": "^2.0.0"
   }

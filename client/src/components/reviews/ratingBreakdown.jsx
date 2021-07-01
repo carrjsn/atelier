@@ -11,7 +11,7 @@ const RatingBreakdown = ({ totalReviews, noOfReviews, avgRating, filterReviews, 
     <div className='reviews-ratings-breakdown'>
       <RatingSummary avgRating={avgRating} noOfReviews={noOfReviews}/>
       <div className='reviews-ratings-breakdown-recommend'>
-        {recommendPercentage}% of users recommend this pdt
+        {noOfReviews === 0 ? 0 : recommendPercentage}% of users recommend this pdt
       </div>
       <StarBreakdown
         totalReviews={totalReviews}

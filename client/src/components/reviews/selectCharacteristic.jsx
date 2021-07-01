@@ -14,10 +14,11 @@ const SelectCharacteristic = ({ characteristics, characteristicName, characteris
   characteristicTable['Comfort'] = comfortMeaning;
   characteristicTable['Quality'] = qualityMeaning;
   characteristicTable['Fit'] = fitMeaning;
+  characteristicTable['Length'] = lengthMeaning;
 
-  // console.log('TABE', characteristicTable)
+  // console.log('TABLE', characteristicTable)
   let currentCharacteristic = characteristicTable[characteristicName];
-
+  // console.log('CHECK', characteristics[characteristicId])
   return  (
     <div className='characteristic'>
       {characteristicName} : {currentCharacteristic[Number(characteristics[characteristicId]) - 1] || 'none selected'}

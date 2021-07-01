@@ -5,7 +5,7 @@ const MoreReviews = ({ get2Reviews }) => {
     get2Reviews();
   }
   return (
-    <div>
+    <div className='more-reviews'>
       <button type='button' onClick={handleMoreReviewsClick}> MORE REVIEWS</button>
     </div>
   );

@@ -175,7 +175,7 @@ class AddReview extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='add-review'>
         <button type='button' onClick={this.displayModal}> ADD A REVIEW </button>
         {
           this.state.showModal ?

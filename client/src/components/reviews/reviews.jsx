@@ -60,7 +60,7 @@ export class Reviews extends React.Component {
               noOfFilteredSearchedTotalReviews={this.props.filteredSearchedTotalReviews.length}
             />
 
-            <Search onReviewsSearch={this.props.onReviewsSearch}/>
+            <Search onReviewsSearch={this.props.onReviewsSearch} productId={this.props.productId}/>
 
             {
               this.props.searchTerm.length >=3 && this.props.selectedFilters.length > 0 ? (this.props.filteredSearchedCurrentReviews.length === 0 ? null : reviewsList) :

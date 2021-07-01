@@ -4,7 +4,7 @@
   /* position: absolute; */
   /* transform: translate(0%, 0%); */
   max-width: 1000px;
-  height: 200px;
+  height: 350px;
   /* background-color: red; */
   overflow: hidden;
 }
@@ -17,9 +17,13 @@
 }
 
 .card {
-  width: 350px;
-  height: 200px;
-  border: 2px, solid black;
+  width: 200px;
+  height: 325px;
   box-sizing: border-box;
   font-size: 2.5;
+  margin-right: 50px;
+}
+
+.card-image {
+  object-fit: cover;
 }

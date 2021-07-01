@@ -12,7 +12,7 @@ const StarBreakdown = ({ totalReviews, filterReviews, selectedFilters, removeFil
           selectedFilters.length === 0 ? 0 :
           <div>
             {
-              selectedFilters.map((filter, idx, list) => {
+              selectedFilters.sort().map((filter, idx, list) => {
                 if (idx === list.length - 1) {
                   return `${filter} stars`
                 }
@@ -30,7 +30,14 @@ const StarBreakdown = ({ totalReviews, filterReviews, selectedFilters, removeFil
       {
         stars.map((star, idx) => {
           let filteredReviews = totalReviews.filter((review) => review.rating === star)
-          let fillPercentage = Math.round((filteredReviews.length / totalReviews.length) * 100)
+          let fillPercentage;
+          if (filteredReviews.length === 0) {
+            fillPercentage = 0;
+          } else {
+            fillPercentage = Math.round((filteredReviews.length / totalReviews.length) * 100)
+          }
+          // console.log('filtered', filteredReviews, 'fill', fillPercentage)
+
           return <Bar key={idx} star={star} noOfStarReviews={filteredReviews.length} fill={fillPercentage} filterReviews={filterReviews} removedAllFilters={removedAllFilters}/>
         })
       }

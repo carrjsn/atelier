@@ -6,7 +6,7 @@ const RatingSummary = ({ noOfReviews, avgRating }) => {
 
   return (
     <div className='reviews-ratings-breakdown-summary'>
-      <div className='avgRating'> {avgRating} </div>
+      <div className='avgRating'> {noOfReviews === 0 ? 0 : avgRating} </div>
       <div className='stars'>
         <Stars size={18} rating={avgRating}/>
         <div>{noOfReviews} reviews</div>
