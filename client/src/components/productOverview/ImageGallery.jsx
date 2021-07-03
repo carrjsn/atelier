@@ -127,8 +127,14 @@ class ImageGallery extends React.Component {
     let mainImage;
     let imageList;
     if (this.props.currentStyle.photos) {
-      mainImage = <img className={`image-main-${view}`} alt={this.state.currentImage.url} src={this.state.currentImage.url} onClick={imageClickHandler}></img>
       imageList = <ImageList view={view} currentImage={this.state.currentImage} updateMainImage={this.updateMainImage} photos={this.state.photos} currentIndex={this.state.currentIndex} next={this.nextImage} prev={this.prevImage}/>
+      mainImage = <div className={`image-sub-container-${view}`}>
+        {leftArrow}
+        <img className={`image-main-${view}`} alt={this.state.currentImage.url} src={this.state.currentImage.url} onClick={imageClickHandler}></img>
+        {rightArrow}
+        {minMaxIcon}
+        {imageList}
+        </div>
     } else {
       mainImage = <div></div>
       imageList = <div></div>
@@ -137,19 +143,17 @@ class ImageGallery extends React.Component {
     // zoom view
     if (this.state.zoomView) {
       return (
-        <div id={`image-zoom-wrap`} onMouseMove={this.zoomImage} onMouseOver={this.zoomImage} onClick={this.toggleZoomView}>
-          <img id={`image-main-zoom`} src={this.state.currentImage.url} ></img>
+        <div className='image-gallery-expanded'>
+            <div id={`image-zoom-wrap`} onMouseMove={this.zoomImage} onMouseOver={this.zoomImage} onClick={this.toggleZoomView}>
+              <img id={`image-main-zoom`} src={this.state.currentImage.url} ></img>
+            </div>
         </div>
       );
     }
 
     return (
       <div className={`image-gallery-${view}`}>
-        {leftArrow}
         {mainImage}
-        {rightArrow}
-        {minMaxIcon}
-        {imageList}
       </div>
     );
   }

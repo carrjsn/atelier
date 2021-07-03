@@ -85,6 +85,14 @@ export class Overview extends React.Component {
   }
 
   toggleExpandedView() {
+    if (!this.state.expandedView) {
+      // make lower widgets change opacity while in expanded view
+      document.getElementById('lower-widgets').style.opacity = 0.2;
+      document.getElementById('navbar').style.opacity = 0.2;
+    } else {
+      document.getElementById('lower-widgets').style.opacity = 1;
+      document.getElementById('navbar').style.opacity = 1;
+    }
     this.setState((prevState) => {
       return {
         expandedView: !prevState.expandedView
@@ -112,7 +120,7 @@ export class Overview extends React.Component {
           <ImageGallery currentStyle={this.state.currentStyle} expanded={this.state.expanded} toggleExpandedView={this.toggleExpandedView}/>
           <ProductInfo product={this.state.product} currentStyle={this.state.currentStyle} avgRating={this.props.avgRating} noOfReviews={this.props.noOfReviews}/>
           <StyleSelector updateStyle={this.updateStyle} styles={this.state.styles} currentStyle={this.state.currentStyle}/>
-          <Cart currStyle={this.state.currentStyle}/>
+          <Cart currStyle={this.state.currentStyle} product={this.state.product}/>
           <div className='slogan-feature-container'>
             <SloganDescription product={this.state.product}/>
             <Features product={this.state.product}/>

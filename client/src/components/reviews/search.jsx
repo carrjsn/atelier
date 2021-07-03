@@ -9,8 +9,8 @@ class Search extends React.Component {
   }
 
   handleChange = (e) => {
-    // console.log('e', e.target.value)
-    this.props.onReviewsSearch(e.target.value);
+    console.log('e', e.target.value)
+    // this.props.onReviewsSearch(e.target.value);
     this.setState((prevState) => ({
       searchTerm: e.target.value
     }), () => this.props.onReviewsSearch(this.state.searchTerm))

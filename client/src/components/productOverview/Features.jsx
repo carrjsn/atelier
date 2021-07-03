@@ -6,12 +6,23 @@ const Features = (props) => {
     return null;
   }
 
+  // remove duplicates
+  let features = [];
+  let filtered = [];
+  props.product.features.forEach(item => {
+    if (!features.includes(item.feature)) {
+      filtered.push(item);
+      features.push(item.feature);
+    }
+
+  });
+
   return (
     <div className='features'>
       <ul>
-      {props.product.features.map((item, idx) => {
+      {filtered.map((item, idx) => {
          let val = item.value ? ': ' + item.value : null;
-         return <li key={idx}>  <b>{item.feature}</b>{val}</li>}
+         return <li key={idx}> <b> {item.feature}</b>{val}</li>}
       )}
       </ul>
     </div>

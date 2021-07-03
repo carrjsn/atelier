@@ -1,14 +1,15 @@
 import React from "react";
 
-const CartStar = ({size=20, color="#000000"}) => (
+const CartStar = ({size=20, color="#000000", handleToggleFavorite, fill='none'}) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    onClick={handleToggleFavorite}
     className='star-box'
     width={size}
     height={size}
     viewBox="0 0 24 24"
     // fill="#FFDF00" yellow for when added
-    fill="none"
+    fill={fill}
     stroke={color}
     strokeWidth="1"
     strokeLinecap="round"

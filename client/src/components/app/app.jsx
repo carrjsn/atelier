@@ -471,12 +471,15 @@ class App extends React.Component {
   render () {
     return (
       <div className='app'>
-        <div className='nav'><h1>Atelier</h1><AppSearch productId={this.state.productId} handlePdtChange={this.handlePdtChange}/></div>
-        {/* <div className='main-container'> */}
-          <div className='app-container'>
-            <OverviewErrorBoundary>
-              <Overview productId={this.state.productId} avgRating={this.state.avgRating} noOfReviews={this.state.noOfReviews}/>
-            </OverviewErrorBoundary>
+        <div className='nav' id='navbar'>
+          <h1>Taiko Designs</h1>
+          <AppSearch productId={this.state.productId} handlePdtChange={this.handlePdtChange}/>
+        </div>
+        <div className='app-container'>
+          <OverviewErrorBoundary>
+            <Overview productId={this.state.productId} avgRating={this.state.avgRating} noOfReviews={this.state.noOfReviews}/>
+          </OverviewErrorBoundary>
+          <div id='lower-widgets'>
             <RelatedItems updateProductId={this.updateProductId}/>
             {/* <QAndA productId={this.state.productId}/> */}
             <ReviewsErrorBoundary>
@@ -514,7 +517,7 @@ class App extends React.Component {
             </ReviewsErrorBoundary>
           </div>
         </div>
-      // </div>
+      </div>
     );
   }
 };

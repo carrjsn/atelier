@@ -103,7 +103,7 @@ class ReviewsTile extends React.Component {
 
         <div className='reviews-tile-actions'>
           <p>WAS THIS REVIEW HELPFUL?
-          <span className='reviews-tile-helpfulness' onClick={this.handleYesClick}> YES </span> ({helpfulness}) OR
+          <span className='reviews-tile-helpfulness' onClick={this.handleYesClick}> YES </span> ( <span className='reviews-tile-helpful-count'> {helpfulness} </span>) OR
           <span> NO </span> (#) |
           <span className='reviews-tile-helpfulness' onClick={this.handleReportClick}> REPORT </span>
           </p>

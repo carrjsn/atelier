@@ -19,7 +19,7 @@ class RelatedItems extends React.Component {
           default_price: '140.00',
           created_at: '2021-03-18T16:09:30.589Z',
           updated_at: '2021-03-18T16:09:30.589Z',
-          stars: 2,
+          stars: 4,
           url: 'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
           features: [
             { feature: 'Fabric', value: 'Canvas' },
@@ -36,7 +36,7 @@ class RelatedItems extends React.Component {
           default_price: '450.00',
           created_at: '2021-03-18T16:09:30.589Z',
           updated_at: '2021-03-18T16:09:30.589Z',
-          stars: 3,
+          stars: 0,
           url: 'https://images.unsplash.com/photo-1551489186-cf8726f514f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
           features: [
             { feature: 'Sole', value: 'Rubber' },
@@ -54,7 +54,7 @@ class RelatedItems extends React.Component {
           default_price: '129.00',
           created_at: '2021-03-18T16:09:31.545Z',
           updated_at: '2021-03-18T16:09:31.545Z',
-          stars: 4,
+          stars: 3,
           url: 'https://images.unsplash.com/photo-1517278322228-3fe7a86cf6f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80',
           features: [
             { feature: 'Cut', value: '"Skinny"' },
@@ -72,7 +72,7 @@ class RelatedItems extends React.Component {
           default_price: '40.00',
           created_at: '2021-03-18T16:09:30.589Z',
           updated_at: '2021-03-18T16:09:30.589Z',
-          stars: 3.5,
+          stars: 4,
           url: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
           features: [
             { feature: 'Fabric', value: '100% Cotton' },
@@ -89,7 +89,7 @@ class RelatedItems extends React.Component {
           default_price: '359.00',
           created_at: '2021-03-18T16:09:31.545Z',
           updated_at: '2021-03-18T16:09:31.545Z',
-          stars: 4.5,
+          stars: 3,
           url: 'https://images.unsplash.com/photo-1536830220630-ce146cccac84?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80',
           features: [
             { feature: 'Lifetime Guarantee', value: null },
@@ -173,20 +173,12 @@ class RelatedItems extends React.Component {
   render() {
     return (
       <div className='related-items'>
-        <h2 className='related-heading'>RELATED PRODUCTS</h2>
+        <h4 className='related-heading'>RELATED PRODUCTS</h4>
         <button className='card-button' onClick={this.handle_previous}>Previous</button>
         <button className='card-button' onClick={this.handle_next}>Next</button>
         <div className="viewPort">
           <div ref={ref_id => this.card_container = ref_id} className="card_container">
-          {/* <div ref={ref_id => this.card_container = ref_id} className="cardContainer"> */}
-          {/* <i class="fa fa-chevron-left"></i> */}
           {this.state.relatedItems.map((item, idx) => <Item key={idx} updateProductId={this.props.updateProductId} id={item.id} category={item.category} name={item.name} price={item.default_price} stars={item.stars} photo={item.url}/>)}
-            {/* <Item itemNumber={0}/>
-            <Item itemNumber={1}/>
-            <Item itemNumber={2}/>
-            <Item itemNumber={3}/>
-            <Item itemNumber={4}/>
-            <Item itemNumber={5}/> */}
           </div>
         </div>
       </div>

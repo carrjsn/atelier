@@ -2,7 +2,7 @@
 .app {
   display: grid;
   grid-template-rows: auto;
-  margin: 0 10%;
+  margin: 0 8%;
   background-color: rgba(226, 181, 181, 0.15);
 }
 
@@ -11,7 +11,10 @@
   color: white;
   font-family: Helvetica, sans-serif;
   height: 60px;
+  /* width: auto; */
   padding-left: 20px;
+  /* margin-left: 10%;
+  margin-right: 10%; */
   margin-bottom: 40px;
   display: flex;
   align-items: center;
@@ -22,7 +25,7 @@
 .app-search {
   /* margin-right: 10%; */
   position: absolute;
-  right: 20%;
+  right: 15%;
   top: 20px;
 }
 
@@ -53,15 +56,12 @@
 }
 
 .nav h1 {
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
 }
 
-
-
-.main-container {
-  display: grid;
-  grid-template-columns: 15% 85%;
-  grid-auto-flow: column;
+#navbar {
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 /*------ PRODUCT OVERVIEW --------*/
@@ -70,11 +70,22 @@
   display: grid;
   grid-template-columns: 65% 35%;
   grid-template-rows: auto;
-  /* grid-template-rows: 1fr 1fr 1fr 20%; */
-  /* gap: 1%; */
-  /* min-height: 600px; */
   margin-bottom: 50px;
-  /* width: 100%; */
+}
+
+#lower-widgets {
+  opacity: 1;
+  padding: 0 20px;
+  margin-top: 15px;
+  transition: opacity 0.5s
+}
+
+#lower-widgets h4 {
+  font-size: 1.3em;
+}
+
+.related-items h4 {
+  margin-bottom: 20px;
 }
 
 /* default view ----------- */
@@ -113,7 +124,6 @@
 .image-right-arrow-default {
   position: absolute;
   bottom: 50%;
-  /* left: 690px; */
   right: 1%;
   z-index: 1;
 }
@@ -133,19 +143,35 @@
   stroke: lightgrey;
 }
 
+/* sub image container for position arrows absolutely regardless of image size */
+.image-sub-container-default {
+  position: relative;
+  width: 100%;
+}
+
+.image-sub-container-expanded {
+  position: relative;
+  width: 90%;
+}
 
 /* expanded view ----------------- */
 .image-gallery-expanded {
   grid-area: 1 / 1 / span 3 / span 2;
-  height: 570px;
-  position: relative;
+  height: 725px;
+  /* position: relative; */
+  width: auto;
+  display: flex;
+  justify-content: center;
 }
 .image-main-expanded {
   /* need this grid-area bc its nested in image gallery */
   grid-area: 1 / 1 / span 3 / span 2;
-  height: 570px;
+  height: 725px;
   width: 100%;
+  /* object-fit: cover; */
   object-fit: cover;
+  /* padding: 8px; */
+  /* border: 2px solid rgba(15, 86, 107, 0.952) */
 }
 .image-main-expanded:hover {
   cursor: zoom-in;
@@ -154,16 +180,16 @@
 /* handle zoom  ----------------------*/
 
 #image-zoom-wrap {
-  grid-area: 1 / 1 / span 3 / span 2;
-  width: 100%;
-  height: 555px;
+  /* grid-area: 1 / 1 / span 3 / span 2; */
+  width: 90%;
+  height: 725px;
   position: relative;
   overflow: hidden;
 }
 
 #image-main-zoom {
-  grid-area: 1 / 1 / span 3 / span 2;
-  height: 555px;
+  /* grid-area: 1 / 1 / span 3 / span 2; */
+  height: 725px;
   max-width: 100%;
   min-width: 100%;
   /* object-fit: contain; */
@@ -187,7 +213,7 @@
 .image-right-arrow-expanded {
   position: absolute;
   bottom: 50%;
-  left: 95%;
+  right: 0.5%;
   z-index: 1;
 }
 .image-right-arrow-expanded:hover {
@@ -259,9 +285,9 @@
 
 .maximize-image {
   position: absolute;
-  bottom: 92%;
-  left: 94%;
-  z-index: 1;
+  top: 2%;
+  right: 1.5%;
+  z-index: 3;
 }
 .maximize-image:hover {
   cursor: pointer;
@@ -270,9 +296,9 @@
 
 .minimize-image {
   position: absolute;
-  bottom: 92.5%;
-  left: 96.5%;
-  z-index: 1;
+  top: 2%;
+  right: 1.5%;
+  z-index: 3;
 }
 
 .minimize-image:hover {
@@ -356,7 +382,7 @@
   flex-direction: row;
   justify-content: center;
   grid-area: 4 / 1 / span 1 / span 2;
-  width: 80%;
+  width: 88%;
   margin-left: 5%;
   margin-top: 15px;
 }
@@ -382,7 +408,7 @@
 .features {
   margin-top: 25px;
   align-self: center;
-  margin-left: 60px;
+  margin-left: 50px;
   border-left: 1px solid black;
   display: inline-block;
 }
@@ -432,6 +458,7 @@
 .styles-text {
   font-weight: bold;
   margin-bottom: 10px;
+  font-size: 1.1em;
 }
 
 .current-style-name {
@@ -439,8 +466,8 @@
 }
 
 .style-name {
-  font-size: 0.9em;
   color: rgb(54, 54, 54);
+  font-size: 1.3em;
 }
 
 .style-row {
@@ -452,12 +479,12 @@
 .style-thumbnail {
   /* margin: 10px; */
   margin-top: 15px;
-  margin-right: 30px;
+  margin-right: 7%;
   display: inline-block;
-  height: 55px;
-  width: 55px;
+  height: 52px;
+  width: 52px;
   padding: 3px;
-  border-radius: 55px;
+  border-radius: 52px;
   background-color: white;
 }
 .style-thumbnail:hover {
@@ -466,9 +493,9 @@
 }
 
 .style-thumbnail img {
-  height: 55px;
-  width: 55px;
-  border-radius: 55px;
+  height: 52px;
+  width: 52px;
+  border-radius: 52px;
 }
 
 .current-style-selection {
@@ -476,8 +503,8 @@
 }
 .current-style-selection svg {
   position: relative;
-  bottom: 62px;
-  left: 40px;
+  bottom: 60px;
+  left: 38px;
 }
 
 .non-current-style {
@@ -511,8 +538,8 @@
 }
 
 .cart-size-select select {
-  height: 45px;
-  width: 150px;
+  height: 50px;
+  width: 180px;
   border: 1.5px solid black;
   border-radius: 0;
   font-size: 13px;
@@ -524,9 +551,9 @@
 }
 
 .cart-quantity-select select {
-  height: 45px;
+  height: 50px;
   margin-left: 15px;
-  width: 60px;
+  width: 70px;
   border: 1.5px solid black;
   border-radius: 0;
 }
@@ -559,7 +586,7 @@
 .star-box {
   border: 1.5px solid black;
   margin-left: 15px;
-  padding: 11px;
+  padding: 13.5px;
   background-color: white;
 }
 
@@ -567,18 +594,27 @@
   /* background-color: rgb(245, 245, 245); */
   cursor: pointer;
   fill: #FFDF00;
+  background-color: rgb(225, 255, 255);
 }
 
 /* ------- RELATED ITEMS --------------------- */
 
 .related-items {
   width: 100%;
-  /* margin-left: 8.6%; */
+  margin-top: 75px;
 }
 
-.related-items h2 {
-  color:rgb(48, 48, 48);
-  margin-bottom: 15px;
+.related-items button:first-of-type {
+  margin-left: 20px;
+}
+
+.related-items button {
+  /* background-color: rgb(129, 216, 243); */
+  background-color: white;
+}
+
+.viewPort {
+  margin-left: 20px;
 }
 
 .card {

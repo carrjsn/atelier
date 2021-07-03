@@ -98,20 +98,29 @@ class ImageList extends React.Component {
     let thumbnailList = this.props.photos.slice(this.state.start, this.state.end);
 
     if (this.props.view === 'default') {
-      return (
-        <div className='image-list-default'>
-          <ArrowUp showHide={upStatus} moveUp={this.moveUp.bind(this)} />
-          {thumbnailList.map((photo, idx) => <ImageThumbnail currentImage={this.props.currentImage} updateMainImage={this.props.updateMainImage} thumbnail={photo.thumbnail_url} photoNumber={idx} url={photo.url} key={idx}/>)}
-          <ArrowDown showHide={downStatus} moveDown={this.moveDown.bind(this)} />
-        </div>
-      )
+      if (this.props.photos.length <= 1) {
+        return (<div className='image-list-default'></div>)
+      } else {
+        return (
+          <div className='image-list-default'>
+            <ArrowUp showHide={upStatus} moveUp={this.moveUp.bind(this)} />
+            {thumbnailList.map((photo, idx) => <ImageThumbnail currentImage={this.props.currentImage} updateMainImage={this.props.updateMainImage} thumbnail={photo.thumbnail_url} photoNumber={idx} url={photo.url} key={idx}/>)}
+            <ArrowDown showHide={downStatus} moveDown={this.moveDown.bind(this)} />
+          </div>
+        )
+      }
     } else {
       // need to address how to handle scrolling in expanded view
-      return (
-        <div className='image-list-expanded'>
-          {this.props.photos.map((photo, idx) => <Circle currentImage={this.props.currentImage} updateMainImage={this.props.updateMainImage} thumbnail={photo.thumbnail_url} key={idx} />)}
-        </div>
-      )
+      if (this.props.photos.length <= 1) {
+        return (<div className='image-list-expanded'></div>)
+      } else {
+        return (
+          <div className='image-list-expanded'>
+            {this.props.photos.map((photo, idx) => <Circle currentImage={this.props.currentImage} updateMainImage={this.props.updateMainImage} thumbnail={photo.thumbnail_url} key={idx} />)}
+          </div>
+        )
+      }
+
     }
 
   }
