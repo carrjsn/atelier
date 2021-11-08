@@ -29,23 +29,14 @@ const ProductInfo = ({product, currentStyle, noOfReviews, avgRating}) => {
   return (
     <div className='product-info'>
       {overviewStars}
-      {/* {readReviews} */}
       <div className='product-category'>{product.category}</div>
       <div className='product-name'>{product.name}</div>
       {price}
-      {/* <div className='product-slogan'>{product.slogan}</div>
-      <div className='product-description'>{product.description}</div> */}
-      {/* <img src={require('./images/facebook.svg')} className='social-media-icon'></img> */}
-      {/* <img src='images/twitter.png' className='social-media-icon'></img>
-      <img src='images/pinterest.png' className='social-media-icon'></img> */}
       <div>
         <FacebookSquare size={35}/>
         <TwitterSquare size={35}/>
         <PinterestSquare size={35}/>
       </div>
-      {/* <FacebookSquare size={30}/>
-      <TwitterSquare size={30}/>
-      <PinterestSquare size={30}/> */}
     </div>
   )
 };

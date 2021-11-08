@@ -1,6 +1,5 @@
 import React from 'react'
 import CheckCircle from '../reviews/checkCircle.jsx';
-// use checkCircle later for selected style
 
 const StyleThumbnail = (props) => {
 

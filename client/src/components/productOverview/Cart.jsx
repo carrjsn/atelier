@@ -2,8 +2,6 @@ import React from 'react';
 import CartStar from './icons/CartStar.jsx';
 import {BACKEND_URL} from '../app/app.jsx';
 
-// const BACKEND_URL = process.env.NODE_ENV === 'development' ? `http://localhost:3000` : `http://54.86.190.136`;
-
 class Cart extends React.Component {
   constructor(props) {
     super(props);
@@ -25,13 +23,11 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    // for checking cart updates - can move elsewhere
     fetch(`${BACKEND_URL}/cart`)
       .then((results) => {
         return results.json();
       })
       .then((cart) => {
-        // console.log('success getting cart from server', cart);
         return;
       })
       .then(() => {
@@ -51,8 +47,6 @@ class Cart extends React.Component {
 
     if (this.state.clickNoSize) {
       this.selectBox.focus();
-      // document.body.addEventListener('click', () => this.setState({ clickNoSize: false}))
-      // setTimeout(() => this.setState({ clickNoSize: false}), 5000);
     }
 
     if (this.props.product.id !== prevProps.product.id) {
@@ -94,13 +88,13 @@ class Cart extends React.Component {
       // get sku for style/size
       let sku_id = this.getSkuId.call(this);
 
-      // iterate and make async POST requests to server
       let fetchPromises = [];
       for (let i = 0; i < this.state.quantity; i++) {
         fetchPromises.push(
           fetch(`${BACKEND_URL}/cart?sku=${sku_id}`, { method: 'POST'})
         )
       }
+
       Promise.all(fetchPromises)
         .then(() => {
           console.log('success posting one or more items to server')
@@ -190,7 +184,6 @@ class Cart extends React.Component {
     }
 
     // SIZE SELECT predefine in case OUT OF STOCK needs to be rendered instead
-    // console.log('nosize', this.state.clickNoSize);
     let cartSizeSelect =
       <span className='cart-size-select'>
         <select ref={input => this.selectBox = input} autoFocus={this.state.clickNoSize} id='size-select' value={this.state.size ? this.state.size : 'SELECT SIZE'} onChange={this.handleSizeChange}>
@@ -239,7 +232,6 @@ class Cart extends React.Component {
     if (this.state.clickNoSize) {
 
       sizePrompt = <span className='cart-text-prompt'>Please select a size!</span>
-      // open dropdown menu?
     } else {
       sizePrompt = null;
     }

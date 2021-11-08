@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      productId: '22134',
+      productId: '59553',
       productName: '',
       totalReviews: [],
       currentReviews: [],
@@ -271,7 +271,7 @@ class App extends React.Component {
     return fetch(reviewsUrl)
     .then((resp) => resp.json())
     .then((allReviews) => {
-      // console.log('all reviews', allReviews)
+      console.log('all reviews', allReviews)
       let avgRating = findAvgRating(allReviews);
       let totalReviews = sortByCriteria(this.state.reviewCriteria, allReviews)
       let helpfulReviews = JSON.parse(window.localStorage.getItem('helpfulReviews'));
