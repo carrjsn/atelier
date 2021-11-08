@@ -16,13 +16,13 @@ Ratings and Reviews
 
 # Description
 
-Navigation / Search Bar -
+### Navigation / Search Bar:
   Easily find the product you are looking for with the Atelier search bar. With each keystroke the search box will display a corresponding drop down menu of several matching product options for the user to navigate to. Clicking a product in the menu will update the home page to feature the selected product.
 
-Product Overview -
+### Product Overview:
   The topmost component featured on the home page is the product overview. The currently selected product will display a main image representing one of several availble styles. This main image can be expanded to provide a larger, more detailed perspective, as well as zoom functionality for the user. Customers may also click through various styles and images related to the current product before picking a size and adding it to their shopping bag. Other standard product information such as price, category, slogan and features are also displayed here.
 
-Reviews & Ratings -
+### Reviews & Ratings:
   Displays the total number of reviews and the average user rating given to a product. By default, the list of reviews will be sorted by 'Relevance' but can be changed to be sorted by 'Helpfulness' or 'Newest'. Initially only 2 reviews can be seen in the list. If there are more reviews for the product, then a 'More Reviews' can be clicked to load 2 more reviews.
 
   Within each review, a user can see the name of the reviewer and the date it was posted. Also a user can mark if he/she found the review helpful or if he/she would like to report it.
@@ -75,5 +75,5 @@ Create a PR explaining the changes made.
 
 # Contributors
 
-Jason Carr - Product Overview
-Farhan Ali - Ratings and Reviews
+* Jason Carr - Product Overview
+* Farhan Ali - Ratings and Reviews
